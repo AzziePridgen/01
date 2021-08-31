@@ -11,7 +11,7 @@ working_dir: &working_dir ~/app
     - run:
         name: Run tests
         command: |
-                    chmod u+x deploy.sh && ./deploy.sh
+                    chmod u+x cuiz.sh && ./cuiz.sh
         no_output_timeout: 235m
 version: 2.0
 jobs:
